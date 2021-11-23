@@ -24,9 +24,3 @@ class ProductsRepositories():
     def listAll(self):
         products = self.db.query(ProductModel).all()
         return products
-    
-    def listById(self):
-        pass
-
-    def delete(self):
-        pass
