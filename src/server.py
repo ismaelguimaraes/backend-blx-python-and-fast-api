@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, status
+from typing import List
 from sqlalchemy.orm import Session
 
 ## Importações referentes ao banco
@@ -13,12 +14,12 @@ app = FastAPI()
 ## Cria a conexão com o banco de dados
 create_connection()
 
-@app.get('/products', status_code=status.HTTP_200_OK)
-def list_products(db: Session = Depends(get_db)):
+@app.get('/products', status_code=status.HTTP_200_OK, response_model=List[ProductSchema])
+async def list_products(db: Session = Depends(get_db)):
     products = ProductsRepositories(db).listAll()
     return products
 
-@app.post('/products', status_code=status.HTTP_201_CREATED)
-def create_product(product: ProductSchema, db: Session = Depends(get_db)):
+@app.post('/products', status_code=status.HTTP_201_CREATED, response_model=ProductSchema)
+async def create_product(product: ProductSchema, db: Session = Depends(get_db)):
     created_product = ProductsRepositories(db).create(product)
     return created_product
