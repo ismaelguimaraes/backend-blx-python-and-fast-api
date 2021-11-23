@@ -2,14 +2,15 @@ from pydantic import BaseModel
 from typing import Optional
 from uuid import uuid4
 
-from models.User import User
-from models.Product import Product
+from schemas.User import User
+from schemas.Product import Product
 
 class Order(BaseModel):
-    id: Optional[str] = uuid4()
-    user: User
-    product: Product
+    id: Optional[str] = str(uuid4())
     quantity: int
     is_delivery: Optional[bool] = True
     address: str
     observation: str
+
+    class Config:
+        orm_mode = True
