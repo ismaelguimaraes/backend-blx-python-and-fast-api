@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Float, Boolean
 from infra.sqlalchemy.config.database import Base
 
-class Product(Base):
+class ProductModel(Base):
     __tablename__ = 'products'
 
     id = Column(String, primary_key=True, index=True)

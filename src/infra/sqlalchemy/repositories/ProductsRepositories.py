@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from schemas.Product import Product as ProductSchema
-from infra.sqlalchemy.models.Products import Product as ProductModel
+from schemas.Product import ProductSchema
+from infra.sqlalchemy.models.Products import ProductModel
 
 class ProductsRepositories():
     def __init__(self, db: Session):

@@ -2,11 +2,8 @@ from pydantic import BaseModel
 from typing import Optional, List
 from uuid import uuid4
 
-from schemas.Order import Order
-from schemas.Product import Product
-
-class User(BaseModel):
-    id: Optional[str] = uuid4()
+class UserSchema(BaseModel):
+    id: Optional[str] = str(uuid4())
     name: str
     telephone: str
     email: str

@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from infra.sqlalchemy.config.database import get_db, create_connection
 
 ## Importações referentes a Produtos
-from schemas.Product import Product as ProductSchema
+from schemas.Product import ProductSchema
 from infra.sqlalchemy.repositories.ProductsRepositories import ProductsRepositories
 
 app = FastAPI()

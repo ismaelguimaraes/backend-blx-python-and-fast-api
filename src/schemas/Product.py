@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from uuid import uuid4
 
-class Product(BaseModel):
+class ProductSchema(BaseModel):
     id: Optional[str] = str(uuid4())
     name: str
     details: str
