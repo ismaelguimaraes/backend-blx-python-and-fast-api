@@ -1,5 +1,7 @@
-from sqlalchemy import Column, String, Float, Boolean
-from infra.sqlalchemy.config.database import Base
+from sqlalchemy import Column, String, Float, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
+
+from ..config.database import Base
 
 class ProductModel(Base):
     __tablename__ = 'products'
@@ -9,3 +11,6 @@ class ProductModel(Base):
     details = Column(String)
     price = Column(Float)
     is_available = Column(Boolean, default=True)
+
+    user_id = Column(String, ForeignKey('users.id'))
+    user = relationship('UserModel', back_populates='products')
